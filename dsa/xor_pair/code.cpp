@@ -1,35 +1,37 @@
-#include <iostream>
-#include <vector>
-
+// C++ program for the above approach
+#include <bits/stdc++.h>
 using namespace std;
 
+int findCount(int arr[], int N)
+{
+	// For storing number of pairs
+	int ans = 0;
+
+	// For storing count of numbers
+	int bits[32] = { 0 };
+
+	// Iterate from 0 to N - 1
+	for (int i = 0; i < N; i++) {
+
+		// Find the most significant bit
+		int val = log2l(arr[i]);
+
+		ans += bits[val];
+		bits[val]++;
+	}
+	return N * (N - 1) / 2 - ans;
+}
+
+// Driver Code
 int main()
 {
-    int n;
-    cin >> n;
+	// Given array arr[]
+	int arr[] = { 1, 2, 3, 4, 5, 6 };
 
-    vector<int> arr(n);
-    for (int i = 0; i < n; ++i)
-    {
-        cin >> arr[i];
-    }
+	int N = sizeof(arr) / sizeof(arr[0]);
 
-    int countPairs = 0;
-    for (int i = 0; i < n; ++i)
-    {
-        for (int j = i + 1; j < n; ++j)
-        {
-            int xorResult = arr[i] ^ arr[j];
-            int andResult = arr[i] & arr[j];
+	// Function Call
+	cout << findCount(arr, N);
 
-            if (xorResult > andResult)
-            {
-                countPairs++;
-            }
-        }
-    }
-
-    cout << countPairs << endl;
-
-    return 0;
+	return 0;
 }
