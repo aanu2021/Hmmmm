@@ -24,3 +24,32 @@ int main(){
     cout<<solve(arr);
     return 0;
 }
+
+
+
+** Another Code
+
+
+#include<bits/stdc++.h>
+using namespace std;
+int solve(vector&nums){
+int ans=1e9;
+int n=nums.size();
+for(int i=2;i<=500;i++){
+    int res=0;
+    for(auto x: nums){
+        res+=(x%i);
+    }
+    ans=min(ans,res);
+}
+return ans;
+}
+int main(){
+int n;
+cin>>n;
+vector arr(n);
+for(int i=0;i<n;i++){
+cin>>arr[i];
+}
+cout<<solve(arr)<<endl;
+}
