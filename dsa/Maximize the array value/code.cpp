@@ -1,36 +1,27 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
+#include <cmath>
 
 using namespace std;
 
-int main()
-{
-    int numTestCases;
-    cin >> numTestCases;
-
-    for (int testCase = 1; testCase <= numTestCases; ++testCase)
-    {
-        int size;
-        cin >> size;
-
-        vector<int> arr(size);
-        for (int i = 0; i < size; ++i)
-        {
-            cin >> arr[i];
+class ValueShift {
+public:
+    int findMinMaxOfArray(vector<int>& values) {
+        int curSum = values[0];
+        int curMinMaxVal = values[0];
+        for (int i = 1; i < values.size(); i++) {
+            curSum += values[i];
+            curMinMaxVal = max(curMinMaxVal, static_cast<int>(ceil(static_cast<double>(curSum) / (i + 1))));
         }
-
-        // Calculate the sum of the elements in the vector
-        int sum = 0;
-        for (int i = 0; i < size; ++i)
-        {
-            sum += arr[i];
-        }
-
-        // Calculate the mean
-        double mean = static_cast<double>(sum) / size;
-
-        cout << mean << endl;
+        return curMinMaxVal;
     }
+};
 
+int main() {
+    ValueShift valueShift;
+    vector<int> values = {5, 10, 15, 20, 25};
+    int result = valueShift.findMinMaxOfArray(values);
+    cout << "Result: " << result << endl;
     return 0;
 }
