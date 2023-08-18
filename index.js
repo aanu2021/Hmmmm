@@ -2,6 +2,63 @@ const express = require("express");
 const app = express();
 
 
+/* Football Competition Winner Goals */
+
+// async function getWinnerTotalGoals(competition, year) {
+//     let goalCount = 0;
+//     let response = await fetch(`https://jsonmock.hackerrank.com/api/football_competitions?name=${competition}&year=${year}`);
+//     let data = await response.json();
+//     let winner = data.data[0].winner;
+//     response = await fetch(`https://jsonmock.hackerrank.com/api/football_matches?competition=${competition}&year=${year}&team1=${winner}`);
+//     data = await response.json();
+//     let total_pages = data.total_pages;
+//     let curr_pages = 1;
+//     while (curr_pages <= total_pages) {
+//         response = await fetch(`https://jsonmock.hackerrank.com/api/football_matches?competition=${competition}&year=${year}&team1=${winner}&page=${curr_pages}`);
+//         data = await response.json();
+//         let arr = data.data;
+//         arr.map((ele) => {
+//             goalCount += Number(ele.team1goals);
+//         })
+//         curr_pages++;
+//     }
+//     response = await fetch(`https://jsonmock.hackerrank.com/api/football_matches?competition=${competition}&year=${year}&team2=${winner}`);
+//     data = await response.json();
+//     total_pages = data.total_pages;
+//     curr_pages = 1;
+//     while (curr_pages <= total_pages) {
+//         response = await fetch(`https://jsonmock.hackerrank.com/api/football_matches?competition=${competition}&year=${year}&team2=${winner}&page=${curr_pages}`);
+//         data = await response.json();
+//         let arr = data.data;
+//         arr.map((ele) => {
+//             goalCount += Number(ele.team2goals);
+//         })
+//         curr_pages++;
+//     }
+//     return goalCount;
+// }
+
+
+
+
+/* Number of Drawn Matches */
+
+// async function getNumDraws(year) {
+//     let goalCount = 0;
+//     let goals = 0;
+//     while(goals <= 10){
+//        let response = await fetch(`https://jsonmock.hackerrank.com/api/football_matches?year=${year}&team1goals=${goals}&team2goals=${goals}`);
+//        let data = await response.json();
+//        goalCount += data.total;
+//        goals++;
+//     }
+//     return goalCount;
+// }
+
+
+
+
+
 /* City Weather Station */
 
 // const sortedFunction = (a,b)=> {
@@ -187,7 +244,7 @@ const app = express();
 
 
 
-app.listen(3000,()=>{
+app.listen(3000, () => {
     console.log("Server is listening at port no 3000");
 })
 
